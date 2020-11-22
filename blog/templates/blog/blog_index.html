@@ -1,0 +1,8 @@
+<h1>voila mon blog index.html</h1>
+<br>
+<h2>listes des articles {{wnom}} </h2>
+{% for article in articles %}
+    <h3><a href="{% url 'articl' article.title %}">{{article.title}}</a> </h3>
+    <p>{{article.author}}</p>
+    <br>
+{% endfor %}
