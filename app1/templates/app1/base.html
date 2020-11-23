@@ -22,7 +22,9 @@
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'index' %}">Link</a>
+              {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'add_pers' %}">Link</a>
+              {% endif %}
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

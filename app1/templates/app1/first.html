@@ -5,7 +5,8 @@
     <div class="container">
         <h1>je suis la mes eleves {{wnom}}</h1>
         {% for personne in personnes %}
-            {{personne.nom}}
+            <a href="{% url 'edit' personne.id %}">{{personne.nom|linebreaks}}</a>
+            
         {% endfor %}
     </div>
 {% endblock  %}
