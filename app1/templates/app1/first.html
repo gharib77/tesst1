@@ -3,7 +3,7 @@
 {% block title %} Mon index {% endblock %}
 {% block content %}
     <div class="container">
-        <h1>je suis la mes eleves</h1>
+        <h1>je suis la mes eleves {{wnom}}</h1>
         {% for personne in personnes %}
             {{personne.nom}}
         {% endfor %}
