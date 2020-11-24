@@ -3,8 +3,13 @@ from django.http import HttpResponse
 from .models import Personne
 from app1.forms import FormPers
 
+from django.contrib.auth.models import User
+from django.contrib import auth
+
+
 # Create your views here.
 def index(request):
+    print("jouami",request.user.id)
     personnes= Personne.objects.all()
     return render(request,'app1/first.html',{"personnes":personnes,'wnom':'hhhhhh'})
 

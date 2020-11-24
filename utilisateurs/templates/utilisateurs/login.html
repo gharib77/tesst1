@@ -1,0 +1,26 @@
+
+{% load static %}
+{% block title %} Login {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="col-md-12 mt-5">
+            {% if messages %}
+                {%for message in messages %}
+                    <div class="alert alert-danger"><strong>{{message}}</strong></div>
+                {%endfor%}
+            {% endif %}
+            <form method="POST" action="">
+                {% csrf_token%}
+                <div class="card">
+                    <div class="card-header text-center"> Connexion</div> 
+                    <div class="card-body">
+                        {{form.as_p}}
+                    </div> 
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-block">Se Connecter</button>
+                    </div>       
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

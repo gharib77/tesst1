@@ -3,7 +3,7 @@
 {% block title %} Mon index {% endblock %}
 {% block content %}
     <div class="container">
-        <h1>je suis la mes eleves {{wnom}}</h1>
+        <h1>je suis la mes eleves {{request.user.username}}</h1>
         {% for personne in personnes %}
             <a href="{% url 'edit' personne.id %}">{{personne.nom|linebreaks}}</a>
             
