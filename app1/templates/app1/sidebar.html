@@ -1,0 +1,10 @@
+{% if request.user.groups.all.0.name == "Admin" %}
+    <a href="#">admin1</a>
+    <a href="#">admin2</a>
+    <a href="#">admin3</a>
+{% endif %}
+{% if request.user.groups.all.0.name == "Customers" %}
+    <a href="#">Customers1</a>
+    <a href="#">Customers2</a>
+    <a href="#">Customers3</a>
+{% endif %}

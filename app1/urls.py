@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from app1 import views
 urlpatterns=[
     path('index/',views.index,name='index'),
     path('add_pers/',views.add_pers,name='add_pers'),

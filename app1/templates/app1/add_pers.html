@@ -2,10 +2,12 @@
 {% load static %}
 {% block title %} add New Pers {% endblock %}
 {% block content %}
-    <p>je suis la mes camarades</p>
-    <form method = "POST" action="">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-primary">Save</button>
-    </form>
+    <div class="container ml-5">
+        <p>je suis la mes camarades</p>
+        <form method = "POST" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-primary">Save</button>
+        </form>
+    </div>
 {% endblock content %}
