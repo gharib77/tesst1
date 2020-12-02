@@ -24,3 +24,23 @@ class Personne(models.Model):
     def __str__(self):
         return self.nom
 
+
+class Ecrivain(models.Model):
+    name=models.CharField(max_length=40)
+    age=models.CharField(max_length=40)
+    class Meta:
+        db_table='ecrivains'
+    def __str__(self):
+        return self.name
+
+class Book(models.Model):
+    name = models.CharField(max_length=255)
+    isbn_number = models.CharField(max_length=13)
+    ecrivain=models.ForeignKey(Ecrivain,on_delete=models.CASCADE,null=True)
+
+    class Meta:
+        db_table = 'books'
+
+    def __str__(self):
+        return self.name
+

@@ -1,4 +1,5 @@
 {% extends 'app1/base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block title %} add New Pers {% endblock %}
 {% block content %}
@@ -11,3 +12,31 @@
         </form>
     </div>
 {% endblock content %}
+{% block javascript %}
+<script>
+    $(document).ready(function(){
+        $("#id_date_nais").datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'materialicons' ,
+             locale: 'fr-fr',
+             format: 'dd/mm/yyyy',
+
+        })
+        $("#id_date_of_birth").datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'materialicons' ,
+             locale: 'fr-fr',
+             format: 'dd/mm/yyyy',
+
+        })
+        $("#id_date_of_death").datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'materialicons' ,
+             locale: 'fr-fr',
+             format: 'dd/mm/yyyy',
+
+        })
+    })
+</script>
+{% endblock javascript %}
+

@@ -1,0 +1,10 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+{% block content %}
+<h1>Liste des ecrivains </h1>
+{% for ecrivain in ecrivains %}
+    <a href="{% url 'editecr' ecrivain.id %}">{{ecrivain.name|linebreaks}} </a>
+    
+{% endfor %}
+
+{% endblock  %}

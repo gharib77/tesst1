@@ -2,9 +2,10 @@
 {% load static %}
 {% block title %} Mon index {% endblock %}
 {% block content %}
-        <h1>je suis la mes eleves {{request.user.username}}</h1>
+        <h1>je suis la mes eleves {{request.user.username}} {{myDate|date:"M"}}</h1>
         {% for personne in personnes %}
             <a href="{% url 'edit' personne.id %}">{{personne.nom|linebreaks}}</a>
+            <a href="{% url 'edit' personne.id %}">{{personne.date_nais|date:'F'}}</a>
             
         {% endfor %}
 {% endblock  %}

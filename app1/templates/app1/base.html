@@ -18,7 +18,9 @@
 
   <!-- Custom styles for this template-->
   <link  rel="stylesheet" href="{% static 'css/sb-admin-2.min.css' %}">
-
+  <link rel="stylesheet" href="{% static 'vendor/datepicker/css/gijgo.css' %}">
+  {% block styles%}
+  {% endblock %}
 </head>
 
 <body id="page-top">
@@ -97,10 +99,13 @@
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   
     <!-- Core plugin JavaScript-->
-  <script src=" #% static vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  <script src=" {% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+    <script src="{% static 'js/sb-admin-2.js' %}"></script>
+    <script src="{% static 'vendor/datepicker/js/gijgo.js' %}"></script>
+    <script src="{% static 'vendor/datepicker/js/messages/messages.fr-fr.js' %}"></script>
+    <script src="{% static 'vendor/datepicker/js/moment.js' %}"></script>
     {% block javascript %}
     {% endblock javascript %}
   

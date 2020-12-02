@@ -1,0 +1,67 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+{% block title %} Formset {% endblock %}
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="button" class="btn btn-sm btn-outline-success add-form-row"
+        id="{{ formset.prefix }}">New Ecrivain</button>
+        <table id ="formset_table"class="table form-table table-bordered table-sm">
+            <thead class="text-center">
+                <tr>
+                    <th>name</th>
+                    <th>isbn_number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for formset in formset %}
+                
+                    <tr class="item hidden" >
+                        {{formset.id}}
+                        <td  >
+                            {{ formset.name }}
+                        </td>
+                        <td >
+                            
+                            {{ formset.isbn_number}}
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm remove-form-row testt"
+                            data-url="{% url 'deletemvt'%}"        
+                            id="{{ formset.prefix }}">
+                                
+                                Delete
+                            </button>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    
+    {{ formset.management_form }}
+
+        <button type="submit">Submit</button>
+    </form>
+</div> 
+ 
+
+{% endblock  %}
+
+
+{% block javascript %}
+<script type="text/javascript" src="{% static 'js/formset2.js' %}"></script>
+{% endblock javascript %}
+
+
+
+
+
