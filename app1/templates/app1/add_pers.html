@@ -7,7 +7,9 @@
         <p>je suis la mes camarades</p>
         <form method = "POST" action="">
             {% csrf_token %}
-            {{ form.as_p }}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
             <button type="submit" class="save btn btn-primary">Save</button>
         </form>
     </div>

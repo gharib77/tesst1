@@ -1,0 +1,10 @@
+{% for produit in produits %}
+    <tr>
+        <td>{{produit.name}}</td>
+        <td>{{produit.qte}}</td>
+        <td><button class="btn bg-gradient-warning btn-sm js-show-form-prod" data-url="{% url 'mod_editprod' produit.id %}">Edit</button></td>
+        <td><button class="btn bg-gradient-danger btn-sm js-show-form-prod" data-url="{% url 'mod_delprod' produit.id %}">Delete</button></td>
+
+    </tr>
+
+{% endfor %}

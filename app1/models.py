@@ -10,6 +10,13 @@ class Grade(models.Model):
     def __str__(self):
         return self.libelle
 
+class Service(models.Model):
+    name= models.CharField(max_length=40)
+    class Meta:
+        db_table='services'
+    def __str__(self):
+        return self.name
+
 class Personne(models.Model):
     nom=models.CharField(max_length=60)
     prenom=models.CharField(max_length=60)
@@ -18,6 +25,7 @@ class Personne(models.Model):
     updated=models.DateTimeField(auto_now=True)
     date_nais=models.DateField(auto_now_add=False,auto_now=False)
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    service=models.ForeignKey(Service,on_delete=models.CASCADE,null=True)
     
     class Meta:
         db_table='personnes'
@@ -26,7 +34,7 @@ class Personne(models.Model):
 
 
 class Ecrivain(models.Model):
-    name=models.CharField(max_length=40)
+    name=models.CharField(max_length=40,help_text='Enter field name')
     age=models.CharField(max_length=40)
     class Meta:
         db_table='ecrivains'
@@ -44,3 +52,13 @@ class Book(models.Model):
     def __str__(self):
         return self.name
 
+class Produit(models.Model):
+    name=models.CharField(max_length=40)
+    qte=models.IntegerField()
+    date_entr=models.DateTimeField(auto_now_add=False,auto_now=False)
+    
+    class Meta:
+        db_table='produits'
+    
+    def __str__(self):
+        return self.name

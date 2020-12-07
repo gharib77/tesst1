@@ -1,5 +1,5 @@
 from django import forms
-from app1.models import Personne,Ecrivain,Book
+from app1.models import Personne,Ecrivain,Book,Produit
 from django.utils.translation import gettext, gettext_lazy as _
 class FormEcr(forms.ModelForm):
     class Meta:
@@ -33,11 +33,12 @@ class FormPers(forms.ModelForm):
     class Meta:
         model=Personne
         fields=('nom','prenom','grade','date_nais')
-    def clean_nom(self):
+    """def clean_nom(self):
         wnom_value = self.cleaned_data['nom']
         if 'fathi' not in wnom_value:
             raise forms.ValidationError('soruuuuuuuuuu')
         return  wnom_value
+    """
     def clean(self):
         cleaned_data = super().clean()
         date_of_birth = cleaned_data.get('date_of_birth')
@@ -45,3 +46,10 @@ class FormPers(forms.ModelForm):
         if date_of_birth and date_of_death and date_of_birth > date_of_death:
             raise forms.ValidationError('Birth date must be before death date.')
         return cleaned_data
+
+class FormProd(forms.ModelForm):
+    date_entr=forms.DateTimeField(input_formats=['%d/%m/%Y'],
+    widget=forms.DateTimeInput(format='%d/%m/%Y'))
+    class Meta:
+        model=Produit
+        fields='__all__'

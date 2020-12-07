@@ -3,15 +3,18 @@
 {% block title %} Mon index {% endblock %}
 {% block content %}
         <h1>je suis la mes eleves {{request.user.username}} {{myDate|date:"M"}}</h1>
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary js-create-pers" data-url="{% url 'mod_addpers' %}" data-toggle="modal" data-target="#myModal" >
+            Ajout Personne
+        </button>
         {% for personne in personnes %}
             <a href="{% url 'edit' personne.id %}">{{personne.nom|linebreaks}}</a>
-            <a href="{% url 'edit' personne.id %}">{{personne.date_nais|date:'F'}}</a>
+            <!-- <a href="{% url 'edit' personne.id %}">{{personne.date_nais|date:'F'}}</a> -->
             
         {% endfor %}
 {% endblock  %}
 
-{% block scripts %}
-    <script src="{% static 'js/main.js' %}"></script>
+{% block javascript %}
 {% endblock  %}
 
 

@@ -1,0 +1,39 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+{% block title %} Mon index {% endblock %}
+{% block content %}
+        <h1>je suis la mes eleves {{request.user.username}} {{myDate|date:"M"}}</h1>
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary js-create-pers" data-url="{% url 'mod_addpers' %}" >
+            Ajout Personne
+        </button>
+        <table id ='table-client'class ="table able-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>nom</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% include 'app1/partial_index_pers.html'%}
+            </tbody>
+        </table>
+    
+        
+
+        <div class="modal" id="modal-client" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+        
+                </div>
+            </div>
+        </div>
+    {% endblock  %}
+
+{% block javascript %}
+    <script src="{% static 'js/myjs.js' %}"></script>
+{% endblock  %}
+
+
+
+

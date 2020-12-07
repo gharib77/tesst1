@@ -1,0 +1,11 @@
+{% for personne in personnes %}
+    <tr>
+        <td>{{personne.nom}}</td>
+        <!-- <td><button class="btn btn-warning js-show-form-edit" data-url="{% url 'mod_editpers' personne.id %}">Edit</button></td> -->
+        <td><button class ="btn btn-warning btn-sm js-show-form-edit" data-url="{% url 'mod_editpers' personne.id %}"><i class ="fas fa-pencil-alt"></i></button></td>
+
+    </tr>
+<!-- <a href="{% url 'edit' personne.id %}">{{personne.nom|linebreaks}}</a> -->
+<!-- <a href="{% url 'edit' personne.id %}">{{personne.date_nais|date:'F'}}</a> -->
+
+{% endfor %}

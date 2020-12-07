@@ -1,0 +1,85 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+{% block title %} Mon index {% endblock %}
+{% block content %}
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary js-show-form-prod" data-url="{% url 'mod_add_prod' %}" >
+            Ajout produit
+        </button>
+        <table id ='table-client'class ="table able-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>qte</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% include 'app1/partial_list_produit.html'%} 
+                
+            </tbody>
+        </table>
+    
+        
+
+        <div class="modal" id="modal-produit" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+        
+                </div>
+            </div>
+        </div>
+    {% endblock  %}
+
+{% block javascript %}
+    <script>
+        $(document).ready(function(){
+            var loadform = function(){
+                btnform = $(this);
+                alert(btnform.attr("data-url"))
+                
+                $.ajax({
+                    url: btnform.attr("data-url"),
+                    type: 'get',
+                    dataType: 'json',
+                    beforeSend: function () {
+                      $("#modal-produit").modal("show");
+                    },
+                    success: function (data) {
+                        $("#modal-produit .modal-content").html(data.html_form);
+                    }
+                  })
+            }
+        var saveform = function(){
+            var form=$(this)
+            alert(form.attr('action'))
+            $.ajax({
+                url:form.attr('action'),
+                type:'POST',
+                data:form.serialize(),
+                dataType:'json',
+                success:function(data){
+                    if(data.form_is_valid){
+                        alert("gggggg")
+                        $("#table-client tbody").html(data.html_list_produit)
+                        $("#modal-produit").modal('hide')
+                    }else{
+                        $("#modal-produit modal-content").html(data.html_form)
+    
+                    }
+                }
+            })
+            return false;
+        }
+        
+
+        $("#table-client").on('click','.js-show-form-prod',loadform)
+        $("#modal-produit").on('submit','.js-post-prod',saveform)
+
+        })
+    </script>
+{% endblock  %}
+
+
+
+
